@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, MapPin, Phone, Mail, CheckCircle2 } from "lucide-react";
 
@@ -24,7 +24,7 @@ const BUDGET_RANGES = [
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
   };
@@ -48,11 +48,17 @@ export default function Contact() {
           </p>
 
           <div className="mt-10 space-y-5">
-            <a href="tel:+919000000000" className="flex items-center gap-4 group">
+            <a href="tel:+918882854334" className="flex items-center gap-4 group">
               <span className="h-11 w-11 flex items-center justify-center border border-navy/15 text-navy group-hover:border-gold group-hover:text-gold transition-colors">
                 <Phone size={17} />
               </span>
-              <span className="text-ink/80 text-[15px]">+91 90000 00000</span>
+              <span className="text-ink/80 text-[15px]">+91 8882854334</span>
+            </a>
+            <a href="tel:+919084391849" className="flex items-center gap-4 group">
+              <span className="h-11 w-11 flex items-center justify-center border border-navy/15 text-navy group-hover:border-gold group-hover:text-gold transition-colors">
+                <Phone size={17} />
+              </span>
+              <span className="text-ink/80 text-[15px]">+91 9084391849</span>
             </a>
             <a href="mailto:hello@archvistastudio.com" className="flex items-center gap-4 group">
               <span className="h-11 w-11 flex items-center justify-center border border-navy/15 text-navy group-hover:border-gold group-hover:text-gold transition-colors">
@@ -60,18 +66,18 @@ export default function Contact() {
               </span>
               <span className="text-ink/80 text-[15px]">hello@archvistastudio.com</span>
             </a>
-            <div className="flex items-center gap-4">
+            <div className="flex items-start gap-4">
               <span className="h-11 w-11 flex items-center justify-center border border-navy/15 text-navy shrink-0">
                 <MapPin size={17} />
               </span>
-              <span className="text-ink/80 text-[15px]">
-                12 Rajpur Road, Dehradun, Uttarakhand 248001
+              <span className="text-ink/80 text-[15px] leading-relaxed">
+                Gurugram · Dwarka (Delhi) · Dehradun · Haridwar · Mumbai · Ahmedabad
               </span>
             </div>
           </div>
 
           <a
-            href="https://wa.me/919000000000"
+            href="https://wa.me/918882854334"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-10 inline-flex items-center gap-2 px-7 py-4 bg-navy text-white text-[13px] font-semibold uppercase tracking-wide hover:bg-gold hover:text-navy transition-colors"
@@ -130,7 +136,7 @@ export default function Contact() {
                   Submit Inquiry
                 </button>
                 <a
-                  href="https://wa.me/919000000000"
+                  href="https://wa.me/918882854334"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-2 px-7 py-4 border border-navy/20 text-navy text-[13px] font-semibold uppercase tracking-wide hover:border-gold hover:text-gold transition-colors"
@@ -146,17 +152,7 @@ export default function Contact() {
   );
 }
 
-function Field({
-  label,
-  name,
-  type = "text",
-  required = false,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-}) {
+function Field({ label, name, type = "text", required = false }) {
   return (
     <div>
       <label htmlFor={name} className="block text-[12px] font-medium tracking-wide uppercase text-navy/70 mb-2">
@@ -173,15 +169,7 @@ function Field({
   );
 }
 
-function SelectField({
-  label,
-  name,
-  options,
-}: {
-  label: string;
-  name: string;
-  options: string[];
-}) {
+function SelectField({ label, name, options }) {
   return (
     <div>
       <label htmlFor={name} className="block text-[12px] font-medium tracking-wide uppercase text-navy/70 mb-2">

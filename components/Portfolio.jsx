@@ -4,19 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
 
-type Category = "Residential" | "Corporate" | "Commercial" | "Luxury Interiors";
-
-interface Project {
-  id: number;
-  title: string;
-  category: Category;
-  image: string;
-  span: string;
-  location: string;
-  area: string;
-}
-
-const PROJECTS: Project[] = [
+const PROJECTS = [
   { id: 1, title: "The Ridgeline Residence", category: "Residential", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop", span: "row-span-2", location: "Dehradun, IN", area: "4,200 sq ft" },
   { id: 2, title: "Meridian Corporate HQ", category: "Corporate", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop", span: "", location: "Noida, IN", area: "18,000 sq ft" },
   { id: 3, title: "Aurelia Penthouse", category: "Luxury Interiors", image: "https://images.unsplash.com/photo-1616137466211-f939a420be84?q=80&w=1200&auto=format&fit=crop", span: "", location: "Mumbai, IN", area: "3,100 sq ft" },
@@ -27,20 +15,20 @@ const PROJECTS: Project[] = [
   { id: 8, title: "Crestview Boutique Hotel", category: "Commercial", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1200&auto=format&fit=crop", span: "", location: "Mussoorie, IN", area: "31,000 sq ft" },
 ];
 
-const CATEGORIES: ("All" | Category)[] = ["All", "Residential", "Corporate", "Commercial", "Luxury Interiors"];
+const CATEGORIES = ["All", "Residential", "Corporate", "Commercial", "Luxury Interiors"];
 
 export default function Portfolio() {
-  const [active, setActive] = useState<"All" | Category>("All");
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [active, setActive] = useState("All");
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const filtered = active === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === active);
 
-  const openLightbox = (id: number) => {
+  const openLightbox = (id) => {
     const idx = filtered.findIndex((p) => p.id === id);
     setLightboxIndex(idx);
   };
 
-  const navigate = (dir: 1 | -1) => {
+  const navigate = (dir) => {
     if (lightboxIndex === null) return;
     setLightboxIndex((lightboxIndex + dir + filtered.length) % filtered.length);
   };

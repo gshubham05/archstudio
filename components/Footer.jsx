@@ -14,6 +14,8 @@ const QUICK_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
+const LOCATIONS = ["Gurugram", "Dwarka (Delhi)", "Dehradun", "Haridwar", "Mumbai", "Ahmedabad"];
+
 export default function Footer() {
   return (
     <footer className="bg-charcoal text-white/70">
@@ -65,15 +67,18 @@ export default function Footer() {
 
         <div>
           <p className="text-white text-[13px] font-semibold tracking-widest2 uppercase mb-5">Find Us</p>
-          <div className="aspect-[4/3] w-full overflow-hidden border border-white/10">
-            <iframe
-              title="ArchVista Studio location"
-              src="https://www.google.com/maps?q=Dehradun,Uttarakhand,India&output=embed"
-              width="100%"
-              height="100%"
-              loading="lazy"
-              style={{ border: 0, filter: "grayscale(1) invert(0.9) contrast(0.85)" }}
-            />
+          <ul className="space-y-2 text-[13.5px] text-white/55 mb-6">
+            {LOCATIONS.map((city) => (
+              <li key={city} className="flex items-center gap-2">
+                <span className="h-1 w-1 rounded-full bg-gold inline-block shrink-0" />
+                {city}
+              </li>
+            ))}
+          </ul>
+          <p className="text-white text-[13px] font-semibold tracking-widest2 uppercase mb-3">Call Us</p>
+          <div className="space-y-1 text-[13.5px] text-white/55">
+            <a href="tel:+918882854334" className="block hover:text-gold transition-colors">+91 8882854334</a>
+            <a href="tel:+919084391849" className="block hover:text-gold transition-colors">+91 9084391849</a>
           </div>
         </div>
       </div>

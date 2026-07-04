@@ -10,8 +10,8 @@ const STATS = [
   { value: 50, suffix: "+", label: "Corporate Projects" },
 ];
 
-function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
+function Counter({ value, suffix }) {
+  const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const [display, setDisplay] = useState(0);
 
@@ -19,9 +19,9 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
     if (!inView) return;
     const duration = 1600;
     const start = performance.now();
-    let frame: number;
+    let frame;
 
-    const tick = (now: number) => {
+    const tick = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplay(Math.round(eased * value));

@@ -28,7 +28,7 @@ const FAQS = [
 ];
 
 export default function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState(0);
 
   return (
     <section className="bg-ivory py-24 md:py-32">
